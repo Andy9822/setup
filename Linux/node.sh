@@ -7,3 +7,4 @@ export NVM_DIR="$HOME/.nvm"
 " >> ~/.zshrc
 nvm install 14
 npm install --global yarn
+source ~/.zshrc
