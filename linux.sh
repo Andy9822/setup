@@ -8,6 +8,6 @@ for file in ./Linux/*; do
     if [ -f "$file" ] && [ -x "$file" ] && [ $(basename "$file" | cut -d. -f1) != "zsh" ]
     then 
         echo "\e[32mInstalling $tool \e[39m"
-        echo "$file"
+        "$file"
     fi
 done
