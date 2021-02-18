@@ -7,9 +7,9 @@ We all know the pain in the a$$ that is downloading and configuring all our setu
 I'll keep updating the scripts with some frequency (I hope) but by now the following stuff is being installed and configured:
 
 ### Ubuntu
-- NodeJS
+- Node
     - nvm
-    - node 14
+    - NodeJS v14
     - yarn
 
 ## Executing  👨‍💻
