@@ -15,6 +15,10 @@ I'll keep updating the scripts with some frequency (I hope) but by now the follo
 - Go
     - Golang latest stable version
 
+- Docker
+    - Docker Engine
+    - Docker Compose
+
 - Vim
     - Install and update vim
     - Remove nano

@@ -13,3 +13,7 @@ go:
 vim:
 	sudo chmod +x ./Linux/vim.sh
 	./Linux/vim.sh
+
+docker:
+	sudo chmod +x ./Linux/docker.sh
+	./Linux/docker.sh
