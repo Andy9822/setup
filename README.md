@@ -12,6 +12,9 @@ I'll keep updating the scripts with some frequency (I hope) but by now the follo
     - NodeJS v14
     - yarn
 
+- Go
+    - Golang latest stable version
+
 ## Executing  👨‍💻
 This repo contains scripts for configuring Linux and Windows.
 Maybe in the future I'll adapt and update it for MacOS support.
