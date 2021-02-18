@@ -15,6 +15,10 @@ I'll keep updating the scripts with some frequency (I hope) but by now the follo
 - Go
     - Golang latest stable version
 
+- Vim
+    - Install and update vim
+    - Remove nano
+
 ## Executing  👨‍💻
 This repo contains scripts for configuring Linux and Windows.
 Maybe in the future I'll adapt and update it for MacOS support.
