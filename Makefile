@@ -17,3 +17,7 @@ vim:
 docker:
 	sudo chmod +x ./Linux/docker.sh
 	./Linux/docker.sh
+
+python:
+	sudo chmod +x ./Linux/python.sh
+	./Linux/python.sh

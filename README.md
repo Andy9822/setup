@@ -12,6 +12,10 @@ I'll keep updating the scripts with some frequency (I hope) but by now the follo
     - NodeJS v14
     - yarn
 
+- Python
+    - pyenv-virtualenv
+    - Python 3.6.5
+
 - Go
     - Golang latest stable version
 
