@@ -4,9 +4,9 @@ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
 
 curl https://pyenv.run | bash
 
-source ~/.zshrc
-
-git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+export PATH="/home/andy/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Autoinit pyenv virtualenv 
 echo '
@@ -15,7 +15,7 @@ export PATH="/home/andy/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc   
 
-source ~/.zshrc
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
 # Create default virtual env with python 3.6.5 and set alias
 pyenv install 3.6.5
