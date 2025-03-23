@@ -7,10 +7,6 @@
       content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
     />
 
-    <!-- <meta
-      name="viewport"
-      content="height=device-height, initial-scale=1.0, interactive-widget=resizes-content"
-    /> -->
     <style>
       body {
         margin: 0;
@@ -73,23 +69,23 @@
 
     <script>
       // Handle visual viewport changes
-      if (window.visualViewport) {
-        const updateViewportHeight = () => {
-          // Use requestAnimationFrame to handle iOS Safari frame delay
-          requestAnimationFrame(() => {
-            document.documentElement.style.setProperty(
-              "--dvh",
-              `${window.visualViewport.height}px`
-            );
-          });
-        };
+      //   if (window.visualViewport) {
+      //     const updateViewportHeight = () => {
+      //       // Use requestAnimationFrame to handle iOS Safari frame delay
+      //       requestAnimationFrame(() => {
+      //         document.documentElement.style.setProperty(
+      //           "--dvh",
+      //           `${window.visualViewport.height}px`
+      //         );
+      //       });
+      //     };
 
-        window.visualViewport.addEventListener("resize", updateViewportHeight);
-        window.visualViewport.addEventListener("scroll", updateViewportHeight);
+      //     window.visualViewport.addEventListener("resize", updateViewportHeight);
+      //     window.visualViewport.addEventListener("scroll", updateViewportHeight);
 
-        // Initial setup
-        updateViewportHeight();
-      }
+      //     // Initial setup
+      //     updateViewportHeight();
+      //   }
 
       // Prevent window scroll when keyboard is open
       const handleScroll = () => {
