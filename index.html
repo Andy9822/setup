@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
+    />
+    <meta
+      name="viewport"
+      content="height=device-height, initial-scale=1.0, interactive-widget=resizes-content"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      input {
+        font-size: 16px;
+      }
+
+      #container {
+        height: 100dvh;
+        display: grid;
+        grid-template:
+          "header" 50px
+          "main" 1fr
+          "footer" 50px;
+      }
+
+      #header {
+        grid-area: header;
+      }
+
+      #main {
+        grid-area: main;
+        overflow-y: scroll;
+      }
+
+      #footer {
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <header id="header">header</header>
+      <main id="main">
+        main 2<br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+        <input type="text" /><br />
+      </main>
+      <footer id="footer">footer</footer>
+    </div>
+  </body>
+</html>
