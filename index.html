@@ -1,404 +1,289 @@
-<style>
-  body {
-    margin: 0px;
-  }
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
+    />
 
-  #editor {
-    padding: 5px 20px;
-  }
+    <style>
+      body {
+        margin: 0px;
+      }
 
-  #editor:focus {
-    outline: 2px solid transparent;
-  }
+      #editor {
+        padding: 5px 20px;
+      }
 
-  #toolbar-wrap {
-    position: sticky;
-    top: 0px;
-    height: 60px;
-    width: 100%;
-  }
+      #editor:focus {
+        outline: 2px solid transparent;
+      }
 
-  #toolbar {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    padding: 15px;
-    background-color: #f1f5f9;
-  }
+      #toolbar-wrap {
+        position: sticky;
+        top: 0px;
+        height: 60px;
+        width: 100%;
+      }
 
-  #toolbar.down {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 500ms;
-  }
+      #toolbar {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        padding: 15px;
+        background-color: #f1f5f9;
+      }
 
-  .button {
-    border-radius: 5px;
-    background-color: transparent;
-    border: 0px;
-    padding: 3px 5px;
-    line-height: 0px;
-    display: inline-block;
-    margin: 1px;
-    cursor: pointer;
-  }
+      #toolbar.down {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 500ms;
+      }
 
-  .button:hover {
-    background-color: #e2e8f0;
-  }
-</style>
-<div id="toolbar-wrap">
-  <div id="toolbar">
-    <button class="button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path fill="none" d="M0 0h24v24H0z" />
-        <path
-          d="M8 11h4.5a2.5 2.5 0 1 0 0-5H8v5zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.498 4.498 0 0 1 18 15.5zM8 13v5h5.5a2.5 2.5 0 1 0 0-5H8z"
-        />
-      </svg>
-    </button>
-    <div class="button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path fill="none" d="M0 0h24v24H0z" />
-        <path d="M15 20H7v-2h2.927l2.116-12H9V4h8v2h-2.927l-2.116 12H15z" />
-      </svg>
+      .button {
+        border-radius: 5px;
+        background-color: transparent;
+        border: 0px;
+        padding: 3px 5px;
+        line-height: 0px;
+        display: inline-block;
+        margin: 1px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #e2e8f0;
+      }
+
+      #textInput {
+        width: 100%;
+        min-height: 2000px;
+        font-size: 16px;
+        background-color: antiquewhite;
+        border: none;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar-wrap">
+      <div id="toolbar">
+        <button class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M8 11h4.5a2.5 2.5 0 1 0 0-5H8v5zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.498 4.498 0 0 1 18 15.5zM8 13v5h5.5a2.5 2.5 0 1 0 0-5H8z"
+            />
+          </svg>
+        </button>
+        <div class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M15 20H7v-2h2.927l2.116-12H9V4h8v2h-2.927l-2.116 12H15z" />
+          </svg>
+        </div>
+        <div class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M8 3v9a4 4 0 1 0 8 0V3h2v9a6 6 0 1 1-12 0V3h2zM4 20h16v2H4v-2z"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
-    <div class="button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-      >
-        <path fill="none" d="M0 0h24v24H0z" />
-        <path
-          d="M8 3v9a4 4 0 1 0 8 0V3h2v9a6 6 0 1 1-12 0V3h2zM4 20h16v2H4v-2z"
-        />
-      </svg>
+
+    <div id="editor">
+      <textarea id="textInput"></textarea>
     </div>
-  </div>
-</div>
 
-<div id="editor" contenteditable="true">
-  <p>This is a very long editable area.</p>
-  <p>
-    The problem is, when you focus in this area on an iOS device, a keyboard
-    pops up and that beautiful fixed toolbar at the top gets hidden.
-  </p>
-  <p>
-    You will need to fork this pen and view in debug mode on an iOS device to
-    see the fix in action (so that you are not viewing it inside an iframe).
-  </p>
-  <p>You might need to scroll down a bit to see the header disappear.</p>
-  <p>Let's fix this problem, using JavaScript!</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>This is a very long editable area.</p>
-  <p>
-    The problem is, when you focus in this area on an iOS device, a keyboard
-    pops up and that beautiful fixed toolbar at the top gets hidden.
-  </p>
-  <p>Let's fix this problem, using JavaScript!</p>
-</div>
-<script>
-  const nativeMax = Math.max;
-  const nativeMin = Math.min;
-  function debounce(func, wait, options) {
-    let lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-    if (typeof func !== "function") {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    wait = Number(wait) || 0;
-    if (typeof options === "object") {
-      leading = !!options.leading;
-      maxing = "maxWait" in options;
-      maxWait = maxing
-        ? nativeMax(Number(options.maxWait) || 0, wait)
-        : maxWait;
-      trailing = "trailing" in options ? !!options.trailing : trailing;
-    }
-
-    function invokeFunc(time) {
-      let args = lastArgs,
-        thisArg = lastThis;
-
-      lastArgs = lastThis = undefined;
-      lastInvokeTime = time;
-      result = func.apply(thisArg, args);
-      return result;
-    }
-
-    function leadingEdge(time) {
-      // Reset any `maxWait` timer.
-      lastInvokeTime = time;
-      // Start the timer for the trailing edge.
-      timerId = setTimeout(timerExpired, wait);
-      // Invoke the leading edge.
-      return leading ? invokeFunc(time) : result;
-    }
-
-    function remainingWait(time) {
-      let timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        result = wait - timeSinceLastCall;
-      console.log("remainingWait");
-      return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-    }
-
-    function shouldInvoke(time) {
-      let timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-      // Either this is the first call, activity has stopped and we're at the trailing
-      // edge, the system time has gone backwards and we're treating it as the
-      // trailing edge, or we've hit the `maxWait` limit.
-      return (
-        lastCallTime === undefined ||
-        timeSinceLastCall >= wait ||
-        timeSinceLastCall < 0 ||
-        (maxing && timeSinceLastInvoke >= maxWait)
-      );
-    }
-
-    function timerExpired() {
-      const time = Date.now();
-      if (shouldInvoke(time)) {
-        return trailingEdge(time);
-      }
-      // Restart the timer.
-      timerId = setTimeout(timerExpired, remainingWait(time));
-    }
-
-    function trailingEdge(time) {
-      timerId = undefined;
-
-      // Only invoke if we have `lastArgs` which means `func` has been debounced at
-      // least once.
-      if (trailing && lastArgs) {
-        return invokeFunc(time);
-      }
-      lastArgs = lastThis = undefined;
-      return result;
-    }
-
-    function cancel() {
-      if (timerId !== undefined) {
-        clearTimeout(timerId);
-      }
-      lastInvokeTime = 0;
-      lastArgs = lastCallTime = lastThis = timerId = undefined;
-    }
-
-    function flush() {
-      return timerId === undefined ? result : trailingEdge(Date.now());
-    }
-
-    function debounced() {
-      let time = Date.now(),
-        isInvoking = shouldInvoke(time);
-      lastArgs = arguments;
-      lastThis = this;
-      lastCallTime = time;
-
-      if (isInvoking) {
-        if (timerId === undefined) {
-          return leadingEdge(lastCallTime);
+    <script>
+      const nativeMax = Math.max;
+      const nativeMin = Math.min;
+      function debounce(func, wait, options) {
+        let lastArgs,
+          lastThis,
+          maxWait,
+          result,
+          timerId,
+          lastCallTime,
+          lastInvokeTime = 0,
+          leading = false,
+          maxing = false,
+          trailing = true;
+        if (typeof func !== "function") {
+          throw new TypeError(FUNC_ERROR_TEXT);
         }
-        if (maxing) {
-          // Handle invocations in a tight loop.
+        wait = Number(wait) || 0;
+        if (typeof options === "object") {
+          leading = !!options.leading;
+          maxing = "maxWait" in options;
+          maxWait = maxing
+            ? nativeMax(Number(options.maxWait) || 0, wait)
+            : maxWait;
+          trailing = "trailing" in options ? !!options.trailing : trailing;
+        }
+
+        function invokeFunc(time) {
+          let args = lastArgs,
+            thisArg = lastThis;
+
+          lastArgs = lastThis = undefined;
+          lastInvokeTime = time;
+          result = func.apply(thisArg, args);
+          return result;
+        }
+
+        function leadingEdge(time) {
+          lastInvokeTime = time;
           timerId = setTimeout(timerExpired, wait);
-          return invokeFunc(lastCallTime);
+          return leading ? invokeFunc(time) : result;
         }
+
+        function remainingWait(time) {
+          let timeSinceLastCall = time - lastCallTime,
+            timeSinceLastInvoke = time - lastInvokeTime,
+            result = wait - timeSinceLastCall;
+          return maxing
+            ? nativeMin(result, maxWait - timeSinceLastInvoke)
+            : result;
+        }
+
+        function shouldInvoke(time) {
+          let timeSinceLastCall = time - lastCallTime,
+            timeSinceLastInvoke = time - lastInvokeTime;
+          return (
+            lastCallTime === undefined ||
+            timeSinceLastCall >= wait ||
+            timeSinceLastCall < 0 ||
+            (maxing && timeSinceLastInvoke >= maxWait)
+          );
+        }
+
+        function timerExpired() {
+          const time = Date.now();
+          if (shouldInvoke(time)) {
+            return trailingEdge(time);
+          }
+          timerId = setTimeout(timerExpired, remainingWait(time));
+        }
+
+        function trailingEdge(time) {
+          timerId = undefined;
+          if (trailing && lastArgs) {
+            return invokeFunc(time);
+          }
+          lastArgs = lastThis = undefined;
+          return result;
+        }
+
+        function cancel() {
+          if (timerId !== undefined) {
+            clearTimeout(timerId);
+          }
+          lastInvokeTime = 0;
+          lastArgs = lastCallTime = lastThis = timerId = undefined;
+        }
+
+        function flush() {
+          return timerId === undefined ? result : trailingEdge(Date.now());
+        }
+
+        function debounced() {
+          let time = Date.now(),
+            isInvoking = shouldInvoke(time);
+          lastArgs = arguments;
+          lastThis = this;
+          lastCallTime = time;
+
+          if (isInvoking) {
+            if (timerId === undefined) {
+              return leadingEdge(lastCallTime);
+            }
+            if (maxing) {
+              timerId = setTimeout(timerExpired, wait);
+              return invokeFunc(lastCallTime);
+            }
+          }
+          if (timerId === undefined) {
+            timerId = setTimeout(timerExpired, wait);
+          }
+          return result;
+        }
+        debounced.cancel = cancel;
+        debounced.flush = flush;
+        return debounced;
       }
-      if (timerId === undefined) {
-        timerId = setTimeout(timerExpired, wait);
+
+      function throttle(func, wait, options) {
+        let leading = true,
+          trailing = true;
+
+        if (typeof func !== "function") {
+          throw new TypeError(FUNC_ERROR_TEXT);
+        }
+        if (typeof options === "object") {
+          leading = "leading" in options ? !!options.leading : leading;
+          trailing = "trailing" in options ? !!options.trailing : trailing;
+        }
+        return debounce(func, wait, {
+          leading,
+          maxWait: wait,
+          trailing,
+        });
       }
-      return result;
-    }
-    debounced.cancel = cancel;
-    debounced.flush = flush;
-    return debounced;
-  }
 
-  function throttle(func, wait, options) {
-    let leading = true,
-      trailing = true;
+      let fixPosition = 0;
+      let lastScrollY = window.pageYOffset;
+      let toolbarWrap = document.getElementById("toolbar-wrap");
+      let toolbar = document.getElementById("toolbar");
+      let editor = document.getElementById("editor");
 
-    if (typeof func !== "function") {
-      throw new TypeError(FUNC_ERROR_TEXT);
-    }
-    if (typeof options === "object") {
-      leading = "leading" in options ? !!options.leading : leading;
-      trailing = "trailing" in options ? !!options.trailing : trailing;
-    }
-    return debounce(func, wait, {
-      leading,
-      maxWait: wait,
-      trailing,
-    });
-  }
+      const setMargin = function () {
+        const newPosition = toolbarWrap.getBoundingClientRect().top;
+        if (newPosition < -1) {
+          toolbar.classList.add("down");
+          fixPosition = Math.abs(newPosition);
+          if (
+            window.innerHeight + window.pageYOffset >=
+            document.body.offsetHeight
+          ) {
+            fixPosition -= 2;
+          }
+          toolbar.style["margin-top"] = fixPosition + "px";
+        }
+      };
 
-  let fixPosition = 0; // the fix
-  let lastScrollY = window.pageYOffset; // the last scroll position
-  let toolbarWrap = document.getElementById("toolbar-wrap"); // the toolbar wrap
-  let toolbar = document.getElementById("toolbar"); // the toolbar
-  let editor = document.getElementById("editor"); // the editor
+      const debounceMargin = debounce(setMargin, 150);
 
-  // function to set the margin to show the toolbar if hidden
-  const setMargin = function () {
-    // if toolbar wrap is hidden
-    const newPosition = toolbarWrap.getBoundingClientRect().top;
-    if (newPosition < -1) {
-      // add a margin to show the toolbar
-      toolbar.classList.add("down"); // add class so toolbar can be animated
-      fixPosition = Math.abs(newPosition); // this is new position we need to fix the toolbar in the display
-      // if at the bottom of the page take a couple of pixels off due to gap
-      if (
-        window.innerHeight + window.pageYOffset >=
-        document.body.offsetHeight
-      ) {
-        fixPosition -= 2;
-      }
-      // set the margin to the new fixed position
-      toolbar.style["margin-top"] = fixPosition + "px";
-    }
-  };
+      const showToolbar = function () {
+        if (fixPosition > 0) {
+          toolbar.classList.remove("down");
+          fixPosition = 0;
+          toolbar.style["margin-top"] = 0 + "px";
+        }
+        debounceMargin();
+      };
 
-  // use lodash debounce to stop flicker
-  const debounceMargin = debounce(setMargin, 150);
-
-  // function to run on scroll and blur
-  const showToolbar = function () {
-    // remove animation and put toolbar back in default position
-    if (fixPosition > 0) {
-      toolbar.classList.remove("down");
-      fixPosition = 0;
-      toolbar.style["margin-top"] = 0 + "px";
-    }
-    // will check if toolbar needs to be fixed
-    debounceMargin();
-  };
-
-  // add an event listener to scroll to check if
-  // toolbar position has moved off the page
-  window.addEventListener("scroll", showToolbar);
-  // add an event listener to blur as iOS keyboard may have closed
-  // and toolbar postition needs to be checked again
-  editor.addEventListener("blur", showToolbar);
-</script>
+      window.addEventListener("scroll", showToolbar);
+      editor.addEventListener("blur", showToolbar);
+    </script>
+  </body>
+</html>
