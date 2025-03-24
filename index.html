@@ -1,115 +1,404 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Title</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
-    />
+<style>
+  body {
+    margin: 0px;
+  }
 
-    <style>
-      body {
-        margin: 0;
-        font-size: 16px;
-        width: 100%;
-        height: 100%;
-      }
+  #editor {
+    padding: 5px 20px;
+  }
 
-      input {
-        font-size: 16px;
-      }
+  #editor:focus {
+    outline: 2px solid transparent;
+  }
 
-      #container {
-        height: 100%;
-      }
+  #toolbar-wrap {
+    position: sticky;
+    top: 0px;
+    height: 60px;
+    width: 100%;
+  }
 
-      .sticky-section {
-        position: relative;
-      }
+  #toolbar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    padding: 15px;
+    background-color: #f1f5f9;
+  }
 
-      .sticky-header {
-        position: sticky;
-        top: 0;
-        background: blueviolet;
-        z-index: 100;
-        padding: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="container">
-      <main id="main">
-        <div style="height: 500px; background: #f0f0f0; padding: 20px">
-          <h1>Dummy Content</h1>
-          <p>This is some dummy content before the sticky section.</p>
-        </div>
+  #toolbar.down {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
 
-        <div class="sticky-section">
-          <div class="sticky-header">header</div>
-          <textarea
-            id="textInput"
-            style="
-              background-color: antiquewhite;
-              width: 378px;
-              height: 2000px;
-              font-size: 16px;
-            "
-          ></textarea>
-        </div>
-      </main>
+  .button {
+    border-radius: 5px;
+    background-color: transparent;
+    border: 0px;
+    padding: 3px 5px;
+    line-height: 0px;
+    display: inline-block;
+    margin: 1px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #e2e8f0;
+  }
+</style>
+<div id="toolbar-wrap">
+  <div id="toolbar">
+    <button class="button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path
+          d="M8 11h4.5a2.5 2.5 0 1 0 0-5H8v5zm10 4.5a4.5 4.5 0 0 1-4.5 4.5H6V4h6.5a4.5 4.5 0 0 1 3.256 7.606A4.498 4.498 0 0 1 18 15.5zM8 13v5h5.5a2.5 2.5 0 1 0 0-5H8z"
+        />
+      </svg>
+    </button>
+    <div class="button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path d="M15 20H7v-2h2.927l2.116-12H9V4h8v2h-2.927l-2.116 12H15z" />
+      </svg>
     </div>
+    <div class="button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path fill="none" d="M0 0h24v24H0z" />
+        <path
+          d="M8 3v9a4 4 0 1 0 8 0V3h2v9a6 6 0 1 1-12 0V3h2zM4 20h16v2H4v-2z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
 
-    <script>
-      // Handle visual viewport changes
-      if (window.visualViewport) {
-        const updateViewportHeight = () => {
-          // Use requestAnimationFrame to handle iOS Safari frame delay
-          requestAnimationFrame(() => {
-            document.documentElement.style.setProperty(
-              "--vh",
-              `${window.visualViewport.height}px`
-            );
+<div id="editor" contenteditable="true">
+  <p>This is a very long editable area.</p>
+  <p>
+    The problem is, when you focus in this area on an iOS device, a keyboard
+    pops up and that beautiful fixed toolbar at the top gets hidden.
+  </p>
+  <p>
+    You will need to fork this pen and view in debug mode on an iOS device to
+    see the fix in action (so that you are not viewing it inside an iframe).
+  </p>
+  <p>You might need to scroll down a bit to see the header disappear.</p>
+  <p>Let's fix this problem, using JavaScript!</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>This is a very long editable area.</p>
+  <p>
+    The problem is, when you focus in this area on an iOS device, a keyboard
+    pops up and that beautiful fixed toolbar at the top gets hidden.
+  </p>
+  <p>Let's fix this problem, using JavaScript!</p>
+</div>
+<script>
+  const nativeMax = Math.max;
+  const nativeMin = Math.min;
+  function debounce(func, wait, options) {
+    let lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+    if (typeof func !== "function") {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    wait = Number(wait) || 0;
+    if (typeof options === "object") {
+      leading = !!options.leading;
+      maxing = "maxWait" in options;
+      maxWait = maxing
+        ? nativeMax(Number(options.maxWait) || 0, wait)
+        : maxWait;
+      trailing = "trailing" in options ? !!options.trailing : trailing;
+    }
 
-            document.body.style.setProperty(
-              "height",
-              `${window.visualViewport.height}px`
-            );
+    function invokeFunc(time) {
+      let args = lastArgs,
+        thisArg = lastThis;
 
-            console.log(
-              "window.visualViewport.height: ",
-              window.visualViewport.height
-            );
-          });
-        };
+      lastArgs = lastThis = undefined;
+      lastInvokeTime = time;
+      result = func.apply(thisArg, args);
+      return result;
+    }
 
-        window.visualViewport.addEventListener("resize", updateViewportHeight);
-        // window.visualViewport.addEventListener("scroll", updateViewportHeight);
+    function leadingEdge(time) {
+      // Reset any `maxWait` timer.
+      lastInvokeTime = time;
+      // Start the timer for the trailing edge.
+      timerId = setTimeout(timerExpired, wait);
+      // Invoke the leading edge.
+      return leading ? invokeFunc(time) : result;
+    }
 
-        // Initial setup
-        updateViewportHeight();
+    function remainingWait(time) {
+      let timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        result = wait - timeSinceLastCall;
+      console.log("remainingWait");
+      return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+    }
+
+    function shouldInvoke(time) {
+      let timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+      // Either this is the first call, activity has stopped and we're at the trailing
+      // edge, the system time has gone backwards and we're treating it as the
+      // trailing edge, or we've hit the `maxWait` limit.
+      return (
+        lastCallTime === undefined ||
+        timeSinceLastCall >= wait ||
+        timeSinceLastCall < 0 ||
+        (maxing && timeSinceLastInvoke >= maxWait)
+      );
+    }
+
+    function timerExpired() {
+      const time = Date.now();
+      if (shouldInvoke(time)) {
+        return trailingEdge(time);
       }
+      // Restart the timer.
+      timerId = setTimeout(timerExpired, remainingWait(time));
+    }
 
-      // Prevent window scroll when keyboard is open
-      // const handleScroll = () => {
-      //   window.scrollTo(0, 0);
-      // };
+    function trailingEdge(time) {
+      timerId = undefined;
 
-      // window.addEventListener("scroll", handleScroll);
+      // Only invoke if we have `lastArgs` which means `func` has been debounced at
+      // least once.
+      if (trailing && lastArgs) {
+        return invokeFunc(time);
+      }
+      lastArgs = lastThis = undefined;
+      return result;
+    }
 
-      // Clean up event listeners when the page is unloaded
-      window.addEventListener("unload", () => {
-        window.removeEventListener("scroll", handleScroll);
-        if (window.visualViewport) {
-          window.visualViewport.removeEventListener(
-            "resize",
-            updateViewportHeight
-          );
-          // window.visualViewport.removeEventListener(
-          //   "scroll",
-          //   updateViewportHeight
-          // );
+    function cancel() {
+      if (timerId !== undefined) {
+        clearTimeout(timerId);
+      }
+      lastInvokeTime = 0;
+      lastArgs = lastCallTime = lastThis = timerId = undefined;
+    }
+
+    function flush() {
+      return timerId === undefined ? result : trailingEdge(Date.now());
+    }
+
+    function debounced() {
+      let time = Date.now(),
+        isInvoking = shouldInvoke(time);
+      lastArgs = arguments;
+      lastThis = this;
+      lastCallTime = time;
+
+      if (isInvoking) {
+        if (timerId === undefined) {
+          return leadingEdge(lastCallTime);
         }
-      });
-    </script>
-  </body>
-</html>
+        if (maxing) {
+          // Handle invocations in a tight loop.
+          timerId = setTimeout(timerExpired, wait);
+          return invokeFunc(lastCallTime);
+        }
+      }
+      if (timerId === undefined) {
+        timerId = setTimeout(timerExpired, wait);
+      }
+      return result;
+    }
+    debounced.cancel = cancel;
+    debounced.flush = flush;
+    return debounced;
+  }
+
+  function throttle(func, wait, options) {
+    let leading = true,
+      trailing = true;
+
+    if (typeof func !== "function") {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    if (typeof options === "object") {
+      leading = "leading" in options ? !!options.leading : leading;
+      trailing = "trailing" in options ? !!options.trailing : trailing;
+    }
+    return debounce(func, wait, {
+      leading,
+      maxWait: wait,
+      trailing,
+    });
+  }
+
+  let fixPosition = 0; // the fix
+  let lastScrollY = window.pageYOffset; // the last scroll position
+  let toolbarWrap = document.getElementById("toolbar-wrap"); // the toolbar wrap
+  let toolbar = document.getElementById("toolbar"); // the toolbar
+  let editor = document.getElementById("editor"); // the editor
+
+  // function to set the margin to show the toolbar if hidden
+  const setMargin = function () {
+    // if toolbar wrap is hidden
+    const newPosition = toolbarWrap.getBoundingClientRect().top;
+    if (newPosition < -1) {
+      // add a margin to show the toolbar
+      toolbar.classList.add("down"); // add class so toolbar can be animated
+      fixPosition = Math.abs(newPosition); // this is new position we need to fix the toolbar in the display
+      // if at the bottom of the page take a couple of pixels off due to gap
+      if (
+        window.innerHeight + window.pageYOffset >=
+        document.body.offsetHeight
+      ) {
+        fixPosition -= 2;
+      }
+      // set the margin to the new fixed position
+      toolbar.style["margin-top"] = fixPosition + "px";
+    }
+  };
+
+  // use lodash debounce to stop flicker
+  const debounceMargin = debounce(setMargin, 150);
+
+  // function to run on scroll and blur
+  const showToolbar = function () {
+    // remove animation and put toolbar back in default position
+    if (fixPosition > 0) {
+      toolbar.classList.remove("down");
+      fixPosition = 0;
+      toolbar.style["margin-top"] = 0 + "px";
+    }
+    // will check if toolbar needs to be fixed
+    debounceMargin();
+  };
+
+  // add an event listener to scroll to check if
+  // toolbar position has moved off the page
+  window.addEventListener("scroll", showToolbar);
+  // add an event listener to blur as iOS keyboard may have closed
+  // and toolbar postition needs to be checked again
+  editor.addEventListener("blur", showToolbar);
+</script>
