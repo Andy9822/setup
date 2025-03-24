@@ -69,11 +69,21 @@
               "--vh",
               `${window.visualViewport.height}px`
             );
+
+            document.body.style.setProperty(
+              "height",
+              `${window.visualViewport.height}px`
+            );
+
+            console.log(
+              "window.visualViewport.height: ",
+              window.visualViewport.height
+            );
           });
         };
 
         window.visualViewport.addEventListener("resize", updateViewportHeight);
-        window.visualViewport.addEventListener("scroll", updateViewportHeight);
+        // window.visualViewport.addEventListener("scroll", updateViewportHeight);
 
         // Initial setup
         updateViewportHeight();
@@ -94,10 +104,10 @@
             "resize",
             updateViewportHeight
           );
-          window.visualViewport.removeEventListener(
-            "scroll",
-            updateViewportHeight
-          );
+          // window.visualViewport.removeEventListener(
+          //   "scroll",
+          //   updateViewportHeight
+          // );
         }
       });
     </script>
