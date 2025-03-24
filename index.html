@@ -11,10 +11,8 @@
       body {
         margin: 0;
         font-size: 16px;
-        position: fixed;
         width: 100%;
         height: 100%;
-        overflow: hidden;
       }
 
       input {
@@ -23,76 +21,70 @@
 
       #container {
         height: 100%;
-        display: grid;
-        grid-template:
-          "header" 50px
-          "main" 1fr
-          "footer" 50px;
       }
 
-      #header {
-        grid-area: header;
+      .sticky-section {
+        position: relative;
+      }
+
+      .sticky-header {
         position: sticky;
         top: 0;
         background: blueviolet;
         z-index: 100;
-      }
-
-      #main {
-        grid-area: main;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      #footer {
-        grid-area: footer;
+        padding: 10px;
       }
     </style>
   </head>
   <body>
     <div id="container">
-      <header id="header">header</header>
       <main id="main">
-        main 2<br />
-        <textarea
-          id="textInput"
-          style="
-            background-color: antiquewhite;
-            width: 378px;
-            height: 2000px;
-            font-size: 16px;
-          "
-        ></textarea>
+        <div style="height: 500px; background: #f0f0f0; padding: 20px">
+          <h1>Dummy Content</h1>
+          <p>This is some dummy content before the sticky section.</p>
+        </div>
+
+        <div class="sticky-section">
+          <div class="sticky-header">header</div>
+          <textarea
+            id="textInput"
+            style="
+              background-color: antiquewhite;
+              width: 378px;
+              height: 2000px;
+              font-size: 16px;
+            "
+          ></textarea>
+        </div>
       </main>
-      <footer id="footer">footer</footer>
     </div>
 
     <script>
       // Handle visual viewport changes
-      //   if (window.visualViewport) {
-      //     const updateViewportHeight = () => {
-      //       // Use requestAnimationFrame to handle iOS Safari frame delay
-      //       requestAnimationFrame(() => {
-      //         document.documentElement.style.setProperty(
-      //           "--dvh",
-      //           `${window.visualViewport.height}px`
-      //         );
-      //       });
-      //     };
+      if (window.visualViewport) {
+        const updateViewportHeight = () => {
+          // Use requestAnimationFrame to handle iOS Safari frame delay
+          requestAnimationFrame(() => {
+            document.documentElement.style.setProperty(
+              "--vh",
+              `${window.visualViewport.height}px`
+            );
+          });
+        };
 
-      //     window.visualViewport.addEventListener("resize", updateViewportHeight);
-      //     window.visualViewport.addEventListener("scroll", updateViewportHeight);
+        window.visualViewport.addEventListener("resize", updateViewportHeight);
+        window.visualViewport.addEventListener("scroll", updateViewportHeight);
 
-      //     // Initial setup
-      //     updateViewportHeight();
-      //   }
+        // Initial setup
+        updateViewportHeight();
+      }
 
       // Prevent window scroll when keyboard is open
-      const handleScroll = () => {
-        window.scrollTo(0, 0);
-      };
+      // const handleScroll = () => {
+      //   window.scrollTo(0, 0);
+      // };
 
-      window.addEventListener("scroll", handleScroll);
+      // window.addEventListener("scroll", handleScroll);
 
       // Clean up event listeners when the page is unloaded
       window.addEventListener("unload", () => {
